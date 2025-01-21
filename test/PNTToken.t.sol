@@ -28,14 +28,14 @@ contract PNTTokenTest is Test {
     function testBalance() public view {
         assertEq(token.totalSupply(), 10000000000e18);
         assertEq(token.balanceOf(msg.sender), 0);
-        assertEq(token.balanceOf(user1), 2500000000e18);
+        assertEq(token.balanceOf(user1), 4000000000e18);
         assertEq(token.balanceOf(user2), 2000000000e18);
     }
 
     function testTransfer() external {
         token.transfer(userNew, 1000000000e18);
         assertEq(token.balanceOf(userNew), 1000000000e18);
-        assertEq(token.balanceOf(user1), 1500000000e18);
+        assertEq(token.balanceOf(user1), 3000000000e18);
     }
 
     function testApprove() public {
@@ -61,7 +61,7 @@ contract PNTTokenTest is Test {
         assertTrue(token.transferFrom(user1, userNew, 0.7e18));
         vm.stopPrank();
         assertEq(token.allowance(user1, userNew), 1e18 - 0.7e18);
-        assertEq(token.balanceOf(user1), 2500000000e18 - 0.7e18);
+        assertEq(token.balanceOf(user1), 4000000000e18 - 0.7e18);
         assertEq(token.balanceOf(userNew), 0.7e18);
     }
 
@@ -69,7 +69,7 @@ contract PNTTokenTest is Test {
         token.burn(1000000000e18);
 
         assertEq(token.totalSupply(), 9000000000e18);
-        assertEq(token.balanceOf(user1), 1500000000e18);
+        assertEq(token.balanceOf(user1), 3000000000e18);
     }
 
     function testFailBurnInsufficientBalance() external {
