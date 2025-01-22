@@ -9,8 +9,8 @@ contract PNTTokenTest is Test {
     PNTToken token;
 
     // hardhat getSigner() -> vm.addr()
-    address user1 = 0x0000000000000000000000000000000000000001;
-    address user2 = 0x0000000000000000000000000000000000000002;
+    address user1 = 0xc547C150dd3e8F3b4f949742a4B441867e829C87;
+    address user2 = 0xc5fE34430CDF8861dab272a71168f04A1d1582bC;
     address userNew = vm.addr(0x1);
 
     // hardhat beforeEach -> setUp
@@ -21,7 +21,7 @@ contract PNTTokenTest is Test {
 
     function testInfo() public view {
         assertEq("Paynetic", token.name());
-        assertEq("PNT", token.symbol());
+        assertEq("PYN", token.symbol());
         assertEq(18, token.decimals());
     }
 
